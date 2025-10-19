@@ -103,9 +103,6 @@ streamlit run main.py
 5. **Generate Recipe:**  
    - Click the **✨ Ask Sous Chef AI** button to send inputs to the LLM and receive a structured recipe.
 
-
-  ![User Input Flow](images/recipe_presentation.png)   
-
 6. **Recipe Presentation**
 - Once the recipe is generated, the system presents the user with the following:
   - **Recipe Name**: The title of the recipe is shown at the top.
@@ -113,9 +110,8 @@ streamlit run main.py
   - **Cuisine Type**: The cuisine is specified (e.g., Indian).
   - **Diet Type**: The recommended diet type is displayed (e.g., Non-Vegetarian).
   - **Summary**: A brief description of the recipe is provided, describing its flavor, ingredients, and suitable occasions for serving.
-
-  ![User Input Flow](images/Metrics.png) 
-
+    ![User Input Flow](images/recipe_presentation.png)   
+  
 7. **Recipe Metrics** 
 - The application calculates and displays key recipe metrics:
   - **Total Time**: The time it takes to cook the recipe is shown in minutes.
@@ -123,7 +119,19 @@ streamlit run main.py
   - **Calories**: The number of calories per serving, based on the chosen ingredients.
   - **Complexity**: The difficulty level of preparing the dish (e.g., Easy, Medium, Hard).
   - **Nutritional Tip**:Additional information about the health benefits of key ingredient, e.g, Chicken is a great source of lean protein, essential for muscle building and repair.
-
-![User Input Flow](images/Dynamic_adjuster.png) 
+    ![User Input Flow](images/Metrics.png) 
+ 
 8. **Dynamic Quantity Adjuster:**
 - Use the slider to adjust ingredient quantities based on the number of people (default: 2).
+    ![User Input Flow](images/Dynamic_adjuster.png)
+
+9. **Ingredient List** 
+- Ingredients Panel: Displays all necessary ingredients in a clear, organized list.
+        ![User Input Flow](images/Ingredients.png)
+10. **Instructions:**
+- Provides clear, step-by-step guidance to prepare the dish.
+    ![User Input Flow](images/Instructions.png)
+11. **Similar Recipes You Might Like:** 
+- Suggests recipes of a similar type for you to try.
+    ![User Input Flow](images/Similar_Cards.png)
+    
