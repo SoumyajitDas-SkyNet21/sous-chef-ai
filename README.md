@@ -72,3 +72,13 @@ set OPENAI_API_KEY=YOUR_OPENAI_KEY_HERE # Replace YOUR_OPENAI_KEY_HERE with your
 ```bash
 streamlit run main.py
 ```
+
+### 🍴 Usage Example
+
+- Input Ingredients: In the sidebar, list your ingredients (e.g.,  chicken, mushrooms, cream, pasta).
+
+- Select Preferences: Choose cuisine (e.g., Italian) and skill level (e.g., Medium).
+
+- Generate Recipe: Click the ✨ Ask Sous Chef AI button.
+
+- Interact: A structured recipe appears. Use the "Adjust Servings" slider to scale ingredients from 2 to 12 servings instantly.
