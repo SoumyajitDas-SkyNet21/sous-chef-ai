@@ -84,33 +84,21 @@ streamlit run main.py
 - Interact: A structured recipe appears. Use the "Adjust Servings" slider to scale ingredients from 2 to 12 servings instantly.
 
 
-### 🛠️ How It Works
+## 🛠️ How It Works
 
-![Sous Chef AI Workflow](https://your-image-link-here.com/workflow.png)
+![User Input Flow](./images/user_input_flow.png)  
 
+1. **Input Ingredients:**  
+   - In the sidebar, the user lists the main ingredients available in their pantry (e.g., chicken, tomatoes, basil).
 
-1. **User Input:**  
-   - Users enter a list of available ingredients in the sidebar.  
-   - Optionally, users select cuisine, dietary restrictions, and skill level.
+2. **Select Dietary Preference:**  
+   - Choose from **Any**, **Vegetarian**, or **Non-Vegetarian** options.
 
-2. **Prompt Processing:**  
-   - The input is sent to the **LangChain pipeline**, which structures a prompt for the LLM.  
-   - **Pydantic schemas** validate that the output will be in a consistent JSON format.
+3. **Choose Cuisine:**  
+   - Pick a preferred cuisine from the dropdown menu (e.g., Indian, Italian, Mexican).
 
-3. **Recipe Generation:**  
-   - OpenAI's **gpt-4o-mini** model generates the recipe based on the structured prompt.  
-   - The recipe includes:  
-     - Step-by-step cooking instructions  
-     - Ingredient list with quantities  
-     - Metadata such as estimated calories, historical facts, and nutritional tips  
+4. **Select Skill Level:**  
+   - Choose the desired difficulty level for the recipe (e.g., Easy, Medium, Advanced).
 
-4. **Dynamic Scaling:**  
-   - Users can adjust the **servings slider**, and ingredient quantities are automatically recalculated, intelligently handling fractions and units.
-
-5. **Contextual Suggestions:**  
-   - Three similar recipes from the same cuisine are generated for inspiration.  
-   - Users can click any suggestion to instantly generate a new recipe.
-
-6. **Interactive UI:**  
-   - The recipe, scaling, and suggestions are displayed in a clean, responsive **Streamlit interface**.  
-   - Users can interact seamlessly, generating multiple recipes without reloading the app.
+5. **Generate Recipe:**  
+   - Click the **✨ Ask Sous Chef AI** button to send inputs to the LLM and receive a structured recipe.
