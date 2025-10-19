@@ -1,4 +1,4 @@
-# 🔪 Sous Chef AI: Structured Recipe Curator
+# 🔪 Sous Chef AI: Recipe Curator
 
 **Sous Chef AI** is an intelligent, interactive web application built with **Streamlit** and **LangChain**. It leverages the power of OpenAI's LLMs to generate high-quality, perfectly structured cooking recipes based on user-defined ingredients, cuisine, and dietary preferences.
 
