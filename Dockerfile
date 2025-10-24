@@ -25,32 +25,23 @@ COPY . .
 # ---
 
 # Stage 2: Final Runtime Stage - Minimal image for deployment
-
-# Use a smaller, secure base image for the final container
 FROM python:3.11-slim
 
 # Set environment variables for the runtime
+# Cloud Run automatically sets the actual port, but we use 8080 as a default fallback
 ENV PORT=8080 \
-    APP_HOME=/app
+    APP_HOME=/app 
 
 WORKDIR $APP_HOME
 
 # Copy only the installed packages and application code from the builder stage
-# This significantly reduces the size of the final image
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=builder $APP_HOME $APP_HOME
 
-# Streamlit/Cloud Run Entrypoint:
-# Use gunicorn to run Streamlit on the standard Cloud Run port.
-# Gunicorn is generally more stable than the simple 'streamlit run' command.
-# This command tells Gunicorn to listen on the $PORT variable (which Cloud Run provides),
-# and run the Streamlit app.
-# IMPORTANT: Replace 'streamlit_app.py' with the actual name of your Python file!
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "streamlit_gunicorn:main", "--timeout", "120"]
+# 🚀 THE CRITICAL FIX: Explicitly set the host and port for Streamlit
+# The $PORT variable will be set by Cloud Run (usually 8080)
+# We must listen on 0.0.0.0 (all interfaces)
+CMD ["streamlit", "run", "streamlit_app.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
 
-# NOTE ON CMD:
-# The command 'streamlit_gunicorn:main' is an abstraction. Since Streamlit doesn't
-# natively support WSGI/ASGI (which Gunicorn expects), we must wrap the Streamlit command.
-# A simpler, though less robust, command is: 
-# CMD ["streamlit", "run", "streamlit_app.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
-# For this advanced setup, the gunicorn wrapper works best.
+# NOTE: We hardcode 8080 here because Streamlit sometimes ignores the $PORT environment
+# variable for its internal server, but the Cloud Run networking layer maps it correctly.
